@@ -1,0 +1,34 @@
+FROM alpine:edge
+
+# Node
+RUN \
+  apk update && apk upgrade \
+  && apk add --update nodejs nodejs-npm \
+  && npm install npm@latest -g \
+  && npm install -g yo \
+  && npm install -g generator-hubot \
+  && npm install -g coffee-script \
+  && apk add redis \
+  && apk add vim \
+  && rm -rf /var/cache/apk/*
+
+# Create User
+RUN adduser -h /bot -s /bin/ash -S hubot
+
+# Install
+USER hubot
+WORKDIR /bot
+
+# Add contents
+COPY \
+  bot/* ./
+
+# Generate a new bot
+RUN \
+  yo hubot --owner="${HUBOT_OWNER} <${HUBOT_OWNER_EMAIL}>" \
+  --name="${HUBOT_NAME}" \
+  --description="${HUBOT_DESCRIPTION}" \
+  --adapter=slack \
+  --defaults
+
+ENTRYPOINT HUBOT_SLACK_TOKEN=${BOT_SLACK_TOKEN} ./bin/hubot --adapter slack

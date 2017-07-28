@@ -1,0 +1,23 @@
+FROM alpine:edge
+
+# Node
+RUN \
+  apk update && apk upgrade \
+  && apk add --update nodejs nodejs-npm \
+  && npm install npm@latest -g \
+  && npm install -g yo \
+  && npm install -g generator-hubot \
+  && npm install -g coffee-script \
+  && apk add redis \
+  && apk add vim \
+  && rm -rf /var/cache/apk/*
+
+
+# Create User
+RUN adduser -u 501 -h /bot -s /bin/ash -S hubot
+
+# Install
+USER hubot
+WORKDIR /bot
+
+ENTRYPOINT chmod +x ./build/start.sh && ./build/start.sh

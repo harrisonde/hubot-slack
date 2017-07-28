@@ -1,0 +1,13 @@
+node_modules
+.DS_Store*
+.hubot_history
+.env
+env.sh
+*.log
+.editorconfig
+.ash_history
+.config/
+.idea/
+.npm/
+bin/
+Procfile

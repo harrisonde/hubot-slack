@@ -1,0 +1,19 @@
+version: '3'
+services:
+  bot:
+    build:
+      context: ./
+      dockerfile: bot.docker
+    container_name: bot
+    environment:
+      - CONTAINER=bot
+      - HUBOT_SLACK_TOKEN=${BOT_SLACK_TOKEN}
+      - HUBOT_OWNER=${BOT_OWNER}
+      - HUBOT_OWNER_EMAIL=${BOT_OWNER_EMAIL}
+      - HUBOT_DESCRIPTION=${BOT_DESCRIPTION}
+      - HUBOT_NAME=${BOT_NAME}
+    env_file:
+      - .env
+
+    networks:
+      - default
