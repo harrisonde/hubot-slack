@@ -1,26 +1,32 @@
-# Hubot
-## A Hubot for Slack
- 
+# Hubot - A Hubot for Slack
+
+![Github Hubot](https://raw.githubusercontent.com/harrisonde/harrisonde.github.io/master/hubot/hubot-slack.jpg)
+
 ### Description 
-It may go with out saying but "Hubot is your friendly robot sidekick. Install him in your company to dramatically improve employee efficiency." The core of the application is all thanks to the talented folks at GitHub. Out of the box, Hubot is all about having fun by posting jokes and images in Slack. We have expanded that functionality by adding our own Hubot scripts.  
+According to Github, Inc (2017), "Hubot is your friendly robot sidekick. Install him in your company to dramatically improve employee efficiency." The core of the application was created by the talented folks at GitHub utilizing CoffeeScript and Node.js. Hubot ships with scripts providing fun features such as posting images and time checking. The aim of the Hubot for Slack project is establishing a runway from development to production that may remove some of the common development roadblocks encountered while building a Hubot for Slack.     
  
 ### Usage
-The package ships with a utility to get Hubot online with as little work as possible. This may be the preferred method if you are getting started for the first time and want to stay out of the weeds. For more advanced users, feel free to jump past our utility and utilize the underling Docker container.       
+The project ships with Traffic Control, a helper-utility to get Hubot online with minimal effort. Use it to quickly bypass Hubot's upfront wiring and start coding your own custom Hubot scripts. Already know Hubot's schematics by heart? Bypass Traffic Control and utilize the underling Docker container(s).       
 
-#### Environment
-The underlying Docker container needs to know a few things about your bot. This information will get delivered to yeoman generator without interactively prompting. Please update the env file with your specific bot configuration:
+#### Traffic Control
+Traffic Control may be used to get Hubot online with minimal effort. Complete the following steps and start chatting in less then five minutes. 
+
 ```bash
-readonly HUBOT_SLACK_TOKEN="xoxb-xxxx-xxxx"
-readonly HUBOT_OWNER="Name"
-readonly HUBOT_OWNER_EMAIL="Email"
-readonly HUBOT_DESCRIPTION="Delightfully aware robutt"
-readonly HUBOT_NAME="Hubot"
+    $ vim ./build/.env                          # Add your Hubot's specific configuration.
+    $ sh ./build/traffic-control.sh --help      # Read the documentation!
+    $ sh ./build/traffic-control.sh             # Activate your Hubot!
 ```
 
-Move into the scripts directory and run the start up command:
+##### Environment
+Traffic Control needs to know a few things about your Hubot. This information is delivered to the underlying Yeoman generator. Please update the ```./build/.env``` file with your specific Hubot configuration. You may cut, paste, and update the following code snippet:
 
 ```bash
-$ cd Hubot/scripts         # start from the scripts directory
-$ sh start.sh --help       # read the documentation
-$ sh start.sh
-``````
+readonly HUBOT_SLACK_TOKEN="xoxb-xxxx-xxxx" # Visit https://my.slack.com/services/new/bot for a token.
+readonly HUBOT_OWNER="Name"                 # Who is responsible for this Hubot?
+readonly HUBOT_OWNER_EMAIL="Email"          # What is their email?
+readonly HUBOT_DESCRIPTION="My fun Hubot"   # Tell the world about your Hubot.
+readonly HUBOT_NAME="Hubot"                 # What is your Hubot's name?
+```
+
+### References
+* "Getting Started - Hubot Documentation." Github, July 2017, https://hubot.github.com

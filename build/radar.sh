@@ -2,8 +2,12 @@
 set -eou pipefail
 
 readonly LOCAL_LOG_FILE_PATH=${BASE_PATH:="./"}${LOG_FILE:="$(basename "$0").log"}
+readonly LOCAL_LOG_LEVEL=${LOG_LEVEL:=production}
 
-#/ Usage: log [options]
+if [ "$LOCAL_LOG_LEVEL" == "debug" ]; then
+    echo "Running in debug mode ie extremely verbose. As a best practice, disable in production. " ;
+fi
+#/ Usage: radar [options]
 #/ Description: Take in a log request and log it to a log file. Each request may define a log level that describes the severity of the logging message.
 #/ Usage:
 #/  Command Line:
@@ -49,7 +53,9 @@ timestamp() {
 #   A method to log out debug messages in the log.
 #/   --debug: Log a debug message to the logs.
 debug() {
-    echo "[DEBUG $(timestamp)] $@" | tee -a "$LOCAL_LOG_FILE_PATH" >&2 ;
+    if [ "$LOCAL_LOG_LEVEL" == "debug" ]; then
+      echo "[DEBUG $(timestamp)] $@" | tee -a "$LOCAL_LOG_FILE_PATH" >&2 ;
+    fi
 }
 
 ##

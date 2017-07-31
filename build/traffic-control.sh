@@ -2,11 +2,12 @@
 set -eou pipefail
 IFS=$'\n\t'
 
-source $(pwd)/build/log.sh
 source $(pwd)/build/.env
+source $(pwd)/build/radar.sh
+
 
 #/ USAGE:
-#/      start [options]
+#/      traffic-control [options]
 #/
 #/ DESCRIPTION:
 #/      Setup Hubot in a new environment with as little hassle as possible.
@@ -55,7 +56,7 @@ configure() {
         export HUBOT_SLACK_TOKEN=$@
 
     elif [ ! -z "${HUBOT_SLACK_TOKEN+x}" ]; then
-        debug "Using slack token from env file: $HUBOT_SLACK_TOKEN"
+        debug "Using slack token from env file: xoxb-2151xxxxx-xxxxxxxxxxxxx"
 
     else
         warning "Visit the Custom Bot creation page at https://my.slack.com/apps/A0F7YS25R-bots to register your bot with your Slack team and to retrieve a new bot token."
@@ -165,11 +166,11 @@ main $@
 #/
 #/ EXAMPLES:
 #/      Leverage command argument; long form:
-#/      $ start.sh --token="xoxb-123456-abcef-ghij-7890"
+#/      $ traffic-control.sh --token="xoxb-123456-abcef-ghij-7890"
 #/      $ Awesome! Let's get that Hubot rock'n
 #/      $ Commandline arguments supersede; using xoxb-123456-abcef-ghij-7890
 #/
 #/      Environment variable (preferred):
-#/      $ start.sh
+#/      $ traffic-control.sh
 #/      $ Awesome! Let's get that Hubot rock'n
 #/      $ Using slack token from env file: xoxb-123456-abcef-ghij-7890
