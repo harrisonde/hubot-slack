@@ -1,4 +1,4 @@
-# Hubot - A Hubot for Slack
+# Hubot-Slack - A Hubot ready for Slack
 
 ![Github Hubot](https://raw.githubusercontent.com/harrisonde/harrisonde.github.io/master/hubot/hubot-slack.jpg)
 
