@@ -65,6 +65,12 @@ configure() {
 }
 
 ##
+# Add project dependencies
+dependencies() {
+    npm install yo generator-hubot
+}
+
+##
 # Set an environment variable. Mark each name to be passed to child processes in the environment.
 exports() {
     export HUBOT_SLACK_TOKEN
@@ -129,6 +135,8 @@ init() {
         info "Hubot is installed, execute binary."
         start
     else
+        dependencies
+
         backup
 
         generate

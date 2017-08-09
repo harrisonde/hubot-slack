@@ -26,6 +26,7 @@ readonly HUBOT_OWNER="Name"                 # Who is responsible for this Hubot?
 readonly HUBOT_OWNER_EMAIL="Email"          # What is their email?
 readonly HUBOT_DESCRIPTION="My fun Hubot"   # Tell the world about your Hubot.
 readonly HUBOT_NAME="Hubot"                 # What is your Hubot's name?
+readonly HUBOT_ADAPTER="slack"              # The adapter for Slack
 ```
 
 ### References
